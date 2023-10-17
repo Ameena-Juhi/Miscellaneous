@@ -1,0 +1,27 @@
+package com.prodapt.learningspring;
+
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+
+@Controller
+@RequestMapping("/student")
+public class Student {
+
+    @GetMapping
+    public String studentForm(Model model) {
+    	String message = "Hey I set this message on the server";
+    	model.addAttribute("message", message);
+        return "StudentForm";
+    }
+
+    // Add POST mapping for processing form submission here
+    @PostMapping
+    public String processStudentForm(/* Form data binding here */) {
+		return "Successful";
+        // Process form submission and save data
+        // Redirect or return appropriate view
+    }
+}

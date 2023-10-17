@@ -1,0 +1,35 @@
+
+import java.util.List;
+
+public class Straight implements Category{
+
+
+    @Override
+    public int score(List<Die> dice) {
+
+        String s = new String();
+
+        for(Die i : dice) {
+
+            if(!s.contains(String.valueOf(i)))
+
+                s=s.concat(String.valueOf(i));
+
+        }
+
+
+        if(s.contains("12345")||s.contains("23456"))
+
+            return 40;
+
+        else if(s.contains("1234")||s.contains("2345")||s.contains("3456"))
+
+            return 30;        
+
+        else
+
+            return 0;
+
+    }
+
+}

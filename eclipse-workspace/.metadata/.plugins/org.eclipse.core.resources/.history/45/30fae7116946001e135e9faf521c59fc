@@ -1,0 +1,12 @@
+package com.prodapt.learningspring.model;
+
+import java.util.List;
+
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
+
+@Repository
+public abstract interface StudentRepository extends JpaRepository<Studentlist,Integer> {
+	
+	abstract List<Studentlist> findByTitleContainingOrContentContaining(String text, String textAgain);
+}

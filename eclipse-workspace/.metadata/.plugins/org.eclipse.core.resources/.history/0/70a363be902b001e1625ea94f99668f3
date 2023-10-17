@@ -1,0 +1,21 @@
+
+public class testingYahtzee {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		int[] list = {5,5,5,5,1};
+		Yahtzee y = new Yahtzee(list,"");
+		System.out.println(y.Aces());
+		System.out.println(y.Twos());
+		System.out.println(y.Threes());
+		System.out.println(y.Fours());
+		System.out.println(y.Fives());
+		System.out.println(y.Sixes());
+		System.out.println(y.Chance());
+		System.out.println(list[0]);
+		System.out.println(y.ArrayToList(list));
+		System.out.println(y.ThreeOfAKind(list));
+		
+	}
+
+}

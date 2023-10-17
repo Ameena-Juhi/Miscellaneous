@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Students Form</title>
+<style>
+    table {
+        border-collapse: collapse;
+        width: 60%;
+        margin: 20px auto;
+    }
+    th, td {
+        border: 1px solid black;
+        padding: 8px;
+        text-align: center;
+    }
+    th {
+        background-color: #f2f2f2;
+    }
+    h1 {
+        text-align: center;
+    }
+</style>
+</head>
+<body>
+<h1>STUDENTS</h1>
+<br>
+<table id="table">
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Score</th>
+            <th>Rank</th>
+            <th>Operation</th>
+        </tr>
+    </thead>
+    <tbody>
+        
+    </tbody>
+</table>
+<h4>Add New Student details</h4>
+<form name="studentForm" action="" method="post" >
+    <br>
+    <label>Name</label>
+    <input type="text" name="name" id="name">
+    <label>Score</label>
+    <input type="text" name="score" id="score">
+    <br>
+    <br>
+    <input type="button" name="add" value="Add Data" onclick="addStudent();">
+    <br>
+    <Input type="button" value= "Update" onClick="update();">
+	<input type="submit" value="talk to the server and see!">
+</form>
+<p>There is a message from the server: <span th:text="${message}">Server message</span> </p>
+<p>This is the contents of the variable "students" <span th:text=${students}">All students</span></p>
+<script>
+
+function updateRanking() {
+    var rows = document.getElementById('table').rows;
+    
+    // Extract scores from each row and store in an array
+    var scores = [];
+    for (var i = 1; i < rows.length; i++) {
+        var score = parseInt(rows[i].cells[1].innerHTML);
+        scores.push(score);
+    }
+    
+    // Sort scores in descending order
+    scores.sort(function(a, b) {
+        return b - a;
+    });
+    
+    // Update rank column based on sorted scores
+    for (var i = 1; i < rows.length; i++) {
+        var score = parseInt(rows[i].cells[1].innerHTML);
+        var rank = scores.indexOf(score) + 1;
+        rows[i].cells[2].innerHTML = rank;
+    }
+}
+
+
+function addStudent() {
+    var names = document.studentForm.name.value;
+    var scores = document.studentForm.score.value;
+
+    var table = document.getElementById('table');
+    var newRow = table.insertRow(table.rows.length);
+
+    var td1 = newRow.insertCell(0);
+    var td2 = newRow.insertCell(1);
+    var td3 = newRow.insertCell(2);
+    var td4 = newRow.insertCell(3);
+
+    td1.innerHTML = names;
+    td2.innerHTML = scores;
+    td3.innerHTML = '';  // You can set the rank here
+    td4.innerHTML = '<a href="#" onClick="onEdit(this)">Edit</a> <a href="#" onClick="onDelete(this)">Delete</a>';
+
+    updateRanking();
+    
+    document.studentForm.reset();
+}
+
+function onEdit(td) {
+    selectedRow = td.parentElement.parentElement;
+    document.studentForm.name.value = selectedRow.cells[0].innerHTML;
+    document.studentForm.score.value = selectedRow.cells[1].innerHTML;
+    
+}
+
+function update(){
+     if (selectedRow !== null) {
+        selectedRow.cells[0].innerHTML = document.studentForm.name.value;
+        selectedRow.cells[1].innerHTML = document.studentForm.score.value;
+    selectedRow = null;
+    updateRanking();
+    document.studentForm.reset();
+     }
+}
+
+function onDelete(td) {
+    if (confirm('Are you sure you want to delete this entry?')) {
+        row = td.parentElement.parentElement;
+        document.getElementById('table').deleteRow(row.rowIndex);
+        document.studentForm.reset();
+    }
+}
+</script>
+</body>
+</html>

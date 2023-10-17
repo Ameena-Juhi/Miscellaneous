@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<section name="Workbench">
+	<section name="org.eclipse.jdt.debug.ui.MAIN_METHOD_SELECTION_DIALOG">
+		<item key="ShowStatusLine" value="true"/>
+		<item key="History" value="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;&#x0A;&lt;History&gt;&#x0A;&lt;historyRootNode&gt;&#x0A;&lt;infoNode&gt;=Proj1/src&amp;lt;projectGUI{Connect4.java[Connect4&lt;/infoNode&gt;&#x0A;&lt;infoNode&gt;=learningspring/src\/main\/java=/optional=/true=/=/maven.pomderived=/true=/&amp;lt;com.prodapt.learningspring{LearningspringApplication.java[LearningspringApplication&lt;/infoNode&gt;&#x0A;&lt;infoNode&gt;=Sudoku/src\/main\/java=/optional=/true=/=/maven.pomderived=/true=/&amp;lt;com.example.Sudoku{SudokuApplication.java[SudokuApplication&lt;/infoNode&gt;&#x0A;&lt;infoNode&gt;=simplespring/src\/main\/java=/optional=/true=/=/maven.pomderived=/true=/&amp;lt;com.example.simplespring{SimplespringApplication.java[SimplespringApplication&lt;/infoNode&gt;&#x0A;&lt;infoNode&gt;=RestApi/src\/main\/java=/optional=/true=/=/maven.pomderived=/true=/&amp;lt;com.project.RestApi{RestApiApplication.java[RestApiApplication&lt;/infoNode&gt;&#x0A;&lt;infoNode&gt;=cycleAuth/src\/main\/java=/optional=/true=/=/maven.pomderived=/true=/&amp;lt;cycleSpring.cycleAuth{CycleAuthApplication.java[CycleAuthApplication&lt;/infoNode&gt;&#x0A;&lt;/historyRootNode&gt;&#x0A;&lt;/History&gt;"/>
+		<section name="DialogBoundsSettings">
+			<item key="DIALOG_HEIGHT" value="500"/>
+			<item key="DIALOG_WIDTH" value="600"/>
+			<item key="DIALOG_X_ORIGIN" value="10"/>
+			<item key="DIALOG_Y_ORIGIN" value="10"/>
+			<item key="DIALOG_FONT_NAME" value="1|Cantarell|11.0|0|GTK|1|"/>
+		</section>
+	</section>
+</section>

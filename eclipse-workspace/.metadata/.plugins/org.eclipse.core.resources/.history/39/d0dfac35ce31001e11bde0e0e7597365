@@ -1,0 +1,8 @@
+package Noticeboard;
+
+public class contact {
+	
+	@Getter
+	private String Name;
+	private String phoneNumber;
+}

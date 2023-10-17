@@ -1,0 +1,49 @@
+package com.prodapt.learningspring.model;
+
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
+
+import org.springframework.stereotype.Component;
+
+@Component
+public class StudentDB {
+	
+	Connection cnx;
+public StudentDB(){
+	try {
+		Class.forName("com.mysql.jdbc.Driver");
+		cnx = DriverManager.getConnection("jdbc:mysql://localhost:3306/persistence","Ameena","Ameena");
+	} catch (ClassNotFoundException | SQLException e) {
+		// TODO Auto-generated catch block
+		e.printStackTrace();
+	}
+	
+}
+public void addStudent(Student student) throws SQLException {
+
+	PreparedStatement insert = null;
+	
+	
+	String insertstudent = "INSERT INTO StudentList(Ranks,Name,Score) VALUES (?,?,?)";
+//	String updateRank = "SELECT Id, Name, Score, ROW_NUMBER() OVER(ORDER BY Score DESC) AS Ranks FROM StudentList sl;";
+	
+	insert = cnx.prepareStatement(insertstudent);
+		insert.setInt(1, student.getRank() );
+		insert.setString(2, student.getName());
+		insert.setInt(3, student.getScore() );
+		insert.executeUpdate();
+		
+//		updateRank.executeQuery();
+		
+	}
+public void Update(int id,Student student) throws SQLException {
+	String updatestudent = "UPDATE StudentList SET Ranks=? WHERE Id=?";
+	PreparedStatement update = null;
+	update = cnx.prepareStatement(updatestudent);
+	update.setInt(1, student.getRank());
+	update.setInt(2, id);
+	update.executeUpdate();
+}
+}

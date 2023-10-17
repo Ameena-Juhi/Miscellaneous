@@ -1,0 +1,64 @@
+package com.learning.hello;
+
+import jakarta.servlet.ServletException;
+import jakarta.servlet.annotation.WebServlet;
+import jakarta.servlet.http.HttpServlet;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
+import java.io.IOException;
+import java.io.PrintWriter;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.util.List;
+
+/**
+ * Servlet implementation class ValidatePassword
+ */
+public class ValidatePassword extends HttpServlet {
+	private static final long serialVersionUID = 1L;
+       
+	
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		// TODO Auto-generated method stub
+		response.setContentType("text/html");
+		response.getWriter().append("Served at: ").append(request.getContextPath());
+		
+	}
+
+	/**
+	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
+	 */
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		
+		PrintWriter out = response.getWriter();
+		String password = request.getParameter("pwd");
+		out.println(password);
+		 try {
+		        Path filePath = Paths.get("C:/Users/ameenajuhi.j/Documents/passwords.txt");
+		        
+		        if (!Files.exists(filePath)) {
+		            out.println("<p>Error: Password file not found.</p>");
+		            return;
+		        }
+		        
+		        List<String> passwords = Files.readAllLines(filePath);
+		        
+		        if (passwords.contains(password)) {
+		            out.println("<p>Password is invalid.</p>");
+		        } else {
+		            out.println("<p>Password is Valid.</p>");
+		        }
+		    } catch (IOException e) {
+		        out.println("<p>Error reading password file: " + e.getMessage() + "</p>");
+		    }
+		}
+		
+
+
+
+
+
+	}
+
+

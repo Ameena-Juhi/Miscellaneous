@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Odometer</title>
+</head>
+<body>
+<h3>Odometer</h3>
+<form action="OdomtrServlet" method="post" align="center">
+	<input type="text" name="reading" id="read">
+    <input type="submit" name="action" id="prev" value="prev" />
+    <input type="submit" id="nxt" name="action" value="next" />
+</form>
+<h2>Odomoter's Reading':</h2>
+<p><span th:text="${reading}">12345</span></p>
+
+</body>
+</html>

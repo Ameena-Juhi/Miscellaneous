@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Students Form</title>
+<h1>STUDENTS</h1>
+</head>
+<body>
+<br>
+<table id="table" class="table" border="1">
+	<thead>
+	<th>Rank</th>
+	<th>Name</th>
+	<th>Score</th>
+	<th>Operation</th>
+	</thead>
+	<tbody>
+		
+	</tbody>
+</table>
+	<h4>Add New Student details</h4>
+<form action="" method="post" name="studentForm">
+	<br>
+	<label>Name</label>
+	<input type="text" name="Name" id="name">
+	<label>Score</label>
+	<input type="text" name="score" id="score">
+	<br>
+	<br>
+	<input type="button" name="add" value="AddData" onclick="addStudent();">
+	<br>	
+</form>
+
+<script>
+	function addStudent(){
+		var names = document.studentForm.name.value;
+		var scores = document.studentForm.score.value;
+		
+		var tr = document.createElement('tr');
+		
+		var td1 = tr.appendChild(document.createElement('td'));
+		var td2 = tr.appendChild(document.createElement('td'));
+		
+		td1.innerHTML = name;
+		td2.innerHTML = score;
+		
+		document.getElementById('table').appendChild(tr);
+	}
+</script>
+</body>
+</html>

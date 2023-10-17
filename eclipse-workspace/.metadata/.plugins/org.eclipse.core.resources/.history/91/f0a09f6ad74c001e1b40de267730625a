@@ -1,0 +1,5 @@
+package com.prodapt.learningspring.service;
+
+public class CustomUserDetailsService {
+
+}

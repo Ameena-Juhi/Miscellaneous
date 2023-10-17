@@ -1,0 +1,40 @@
+package com.prodapt.learningspring.model;
+
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+
+public class StudentDB {
+
+public  StudentDB() {
+	
+	Connection cnx = DriverManager.getConnection("jdbc:mysql://localhost:3306/persistence","Ameena","Ameena");
+	Statement stmt = null;
+	PreparedStatement insert = null;
+	PreparedStatement update = null;
+	ResultSet rs = null;
+
+	String insertstudent = "INSERT INTO Studentlist(Ranks,Name,Score) VALUES (?,?,?)";
+	String updateName = "UPDATE Studentlist SET Ranks=?,Name=?,Score=?;";
+
+	try {
+		stmt = cnx.createStatement();
+		insert = cnx.prepareStatement(insertstudent);
+		update = cnx.prepareStatement(updateName);
+
+		insert.setString(1, Ranks);
+		insert.setString(2, Name);
+		insert.setString(3, Score);
+		insert.executeUpdate();
+
+
+	} catch (SQLException e) {
+		// TODO Auto-generated catch block
+		e.printStackTrace();
+	}
+
+}
+}

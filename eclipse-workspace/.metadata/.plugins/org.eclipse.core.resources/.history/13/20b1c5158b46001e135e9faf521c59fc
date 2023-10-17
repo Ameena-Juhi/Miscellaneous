@@ -1,0 +1,47 @@
+package com.prodapt.learningspring.model;
+
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+
+public class StudentDB {
+
+public  StudentDB() {
+	
+	Connection cnx = DriverManager.getConnection("jdbc:mysql://localhost:3306/persistence","Ameena","Ameena");
+//	try {
+//	Class.forName("com.mysql.cj.jdbc.Driver");
+//	Connection cnx = DriverManager.getConnection("jdbc:mysql://localhost:3306/persistence","Ameena","Ameena");
+//	}
+//	catch(ClassNotFoundException | SQLException e){
+//		e.printStackTrace();
+//	}
+	Statement stmt = null;
+	PreparedStatement insert = null;
+	PreparedStatement update = null;
+	ResultSet rs = null;
+//	String select = "SELECT * FROM Studentlist s";
+	String insertstudent = "INSERT INTO Studentlist(Ranks,Name,Score) VALUES (?,?,?)";
+	String updateName = "UPDATE Studentlist SET Ranks=?,Name=?,Score=?;";
+
+	try {
+		stmt = cnx.createStatement();
+		insert = cnx.prepareStatement(insertNotice);
+		update = cnx.prepareStatement(updateName);
+
+		insert.setString(1, name);
+		insert.setString(2, notice);
+		insert.setString(3, contact);
+		insert.executeUpdate();
+
+
+	} catch (SQLException e) {
+		// TODO Auto-generated catch block
+		e.printStackTrace();
+	}
+
+}
+}

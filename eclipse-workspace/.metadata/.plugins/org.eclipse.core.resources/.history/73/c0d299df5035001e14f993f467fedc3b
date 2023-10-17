@@ -1,0 +1,74 @@
+package Noticeboard;
+
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.SQLException;
+import java.sql.Statement;
+import java.sql.ResultSet;
+import java.sql.PreparedStatement;
+import java.util.Scanner;
+
+public class DBconnextionTester {
+	public static void main(String[] args) {
+		PreparedStatement insert = null;
+		PreparedStatement update = null;
+		Statement stmt = null;
+		Connection cnx = null;
+		ResultSet rs= null;
+		String insertPosts = "INSERT INTO Posts(PostID, Title) values (?,?)";
+		String updateUserID = "UPDATE UserIDs SET UserID=?";
+		
+		
+		try {
+			cnx = DriverManager.getConnection("jdbc:mysql://localhost:3306/mydb","Ameena","Ameena");
+			stmt = cnx.createStatement();
+			insert = cnx.prepareStatement(insertPosts);
+			System.out.println(insert.getClass());
+			update = cnx.prepareStatement(updateUserID);
+			Scanner sc = new Scanner(System.in);
+			System.out.println("Enter the postID: ");
+			
+			String postid = sc.nextLine();
+			System.out.println("Enter the title: ");
+			String title = sc.nextLine();
+			insert.setInt(1, 5);
+			insert.setString(2, title);
+			rs = stmt.executeQuery("SELECT * FROM Posts p ");
+			System.out.println("PostID, Title");
+			while(rs.next()) {
+				int PostID = rs.getInt("p.PostID");
+				String Title = rs.getString("p.Title");
+				System.out.println(PostID +"," + Title);
+			}
+			
+			
+		}
+		catch(SQLException e) {
+			e.printStackTrace();
+		}
+		finally {
+			if (rs != null) {
+		        try {
+		          rs.close();
+		        } catch (SQLException sqlEx) { } // ignore
+
+		        rs = null;
+		      }
+
+		      if (stmt != null) {
+		        try {
+		          stmt.close();
+		        } catch (SQLException sqlEx) { } // ignore
+
+		        stmt = null;
+		      }
+		      
+		      if (cnx != null) {
+		        try {
+		          cnx.close();
+		        } catch (SQLException sqlEx) { } //ignore
+		      }
+			
+		}
+	}
+}

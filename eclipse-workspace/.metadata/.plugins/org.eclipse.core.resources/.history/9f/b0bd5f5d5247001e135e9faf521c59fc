@@ -1,0 +1,5 @@
+package com.prodapt.learningspring.entity;
+
+public class Post {
+
+}

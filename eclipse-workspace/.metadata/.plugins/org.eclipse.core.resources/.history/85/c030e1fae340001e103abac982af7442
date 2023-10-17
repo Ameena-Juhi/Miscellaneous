@@ -1,0 +1,16 @@
+package com.learning.hello.controller;
+
+
+
+public class CardGame {
+
+	private Deck deck;
+	private Card card;
+	
+	public static void main(String[] args) {
+		Deck deck = new Deck();
+		deck.shuffle();
+		System.out.println(deck.cards);
+	}
+	
+}

@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Students Form</title>
+<h1>STUDENTS</h1>
+</head>
+<body>
+<br>
+<table id="table" class="table" border="1">
+	<thead>
+	<th>Name</th>
+	<th>Score</th>
+    <th>Rank</th>
+	<th>Operation</th>
+	</thead>
+	<tbody>
+		
+	</tbody>
+</table>
+	<h4>Add New Student details</h4>
+<form action="" method="post" name="studentForm">
+	<br>
+	<label>Name</label>
+	<input type="text" name="name" id="name">
+	<label>Score</label>
+	<input type="text" name="score" id="score">
+	<br>
+	<br>
+	<input type="button" name="add" value="AddData" onclick="addStudent();">
+	<br>	
+</form>
+
+<script>
+	function addStudent(){
+		var names = document.studentForm.name.value;
+		var scores = document.studentForm.score.value;
+		
+		var tr = document.createElement('tr');
+		
+		var td1 = tr.appendChild(document.createElement('td'));
+		var td2 = tr.appendChild(document.createElement('td'));
+		var td3 = tr.appendChild(document.createElement('td'));
+		var td4 = tr.appendChild(document.createElement('td'));
+		
+		td1.innerHTML = names;
+		td2.innerHTML = scores;
+		td4.innerHTML = '<a onClick="onEdit(this)">Edit</a> <a onClick="onDelete(this)">Delete</a>';
+		
+		
+		document.getElementById('table').appendChild(tr);
+	}
+	function onEdit(td){
+		selectedRow = td.parentElement.parentElement;
+		td1.value = selectedRow.cells[0].innerHTML;
+		td2.value = selectedRow.cells[1].innerHTML;
+		td3.value = selectedRow.cells[2].innerHTML;
+		td4.value = selectedRow.cells[3].innerHTML;
+	}
+</script>
+</body>
+</html>

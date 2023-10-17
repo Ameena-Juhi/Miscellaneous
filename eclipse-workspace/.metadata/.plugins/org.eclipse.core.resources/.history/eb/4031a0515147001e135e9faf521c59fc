@@ -1,0 +1,5 @@
+package com.prodapt.learningspring.respository;
+
+public class UserRepository {
+
+}

@@ -1,0 +1,30 @@
+package test;
+
+import static org.junit.Assert.assertEquals;
+
+import org.junit.Test;
+import org.junit.jupiter.api.BeforeEach;
+import test.Range;
+
+public class RangeTesting {
+
+    private Range<Integer> range;
+
+    @BeforeEach
+    void setUp(){
+        range = Range.of(1,5);
+    }
+
+    @Test
+    void testContains(){
+        
+        assertEquals(true, range.contains(4));
+    }
+    
+    @Test
+    void testContainsRange() {
+//    	range1 = new Range.of(2,4);
+    }
+
+    
+}

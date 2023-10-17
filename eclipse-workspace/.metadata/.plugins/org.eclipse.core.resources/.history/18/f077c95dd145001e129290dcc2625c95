@@ -1,0 +1,25 @@
+package com.prodapt.learningspring;
+
+import org.apache.catalina.core.ApplicationContext;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
+
+import jakarta.servlet.ServletResponse;
+
+@Controller
+public class Student {
+	
+	@Autowired
+	private ApplicationContext ctx;
+	  
+	@GetMapping("/student")
+	public void student() {
+		
+	}
+	
+	@PostMapping
+	
+	
+
+}

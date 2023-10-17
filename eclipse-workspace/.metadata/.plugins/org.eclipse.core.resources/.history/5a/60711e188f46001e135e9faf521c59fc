@@ -1,0 +1,27 @@
+package com.prodapt.learningspring.model;
+
+import org.springframework.stereotype.Component;
+
+import jakarta.validation.constraints.Min;
+import lombok.Data;
+
+@Component
+@Data
+public class Student {
+  private int id;
+  private String name;
+  @Min(value = 0) private int score;
+  private int rank; 
+  
+  public int getRank() {
+	  return this.rank;
+  }
+  
+  public String getName() {
+	  return this.name;
+  }
+  
+  public int getScore() {
+	  return this.score;
+  }
+}

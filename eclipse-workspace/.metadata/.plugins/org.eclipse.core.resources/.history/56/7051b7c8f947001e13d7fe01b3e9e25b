@@ -1,0 +1,33 @@
+package com.example.simplespring.controller;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+
+import com.example.simplespring.Repository.CyclesRepository;
+
+@Controller
+@RequestMapping("/cycles")
+public class CyclesController {
+	
+	@Autowired
+	private CyclesRepository cyclesRepository;
+	
+	@GetMapping("/ShowAllAvailableCycles")
+	public String showCycles(Model model) {
+		model.addAttribute("Cycles", cyclesRepository.findByAvailable() );
+		return "CycleShop";
+	}
+	
+	@PostMapping
+	public String addCycles(Model model) {
+		
+	}
+	
+	
+	
+
+}

@@ -1,0 +1,16 @@
+package com.prodapt.learningspring.controller.binding;
+
+import lombok.Data;
+
+@Data
+public class AddPostForm {
+  private String content;
+  private int userId;
+public int getUserId() {
+	return this.userId;
+}
+public String getContent() {
+	// TODO Auto-generated method stub
+	return this.content;
+}
+}

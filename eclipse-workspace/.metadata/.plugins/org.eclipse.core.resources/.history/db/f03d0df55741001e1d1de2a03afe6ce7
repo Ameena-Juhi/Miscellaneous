@@ -1,0 +1,74 @@
+package com.learning.hello.controller;
+
+import java.util.ArrayList;
+import java.util.List;
+
+public class CardGame {
+
+	private Deck deck;
+	private Card card;
+	private List<String> InPile;
+	private List<String> OutPile;
+
+	
+	 public String CardGame() {
+	        deck = new Deck(); // Initialize the deck object
+	        
+	        InPile = new ArrayList<>(); // Initialize the InPile list
+	        OutPile = new ArrayList<>(); // Initialize the OutPile list
+	        List<Card> deck = new ArrayList<>();
+
+	        for (int suit = Card.MIN_SUIT; suit <= Card.MAX_SUIT; suit++) {
+	            for (int rank = Card.MIN_RANK; rank <= Card.MAX_RANK; rank++) {
+	                Card card = new Card(rank, suit);
+	                deck.add(card);
+	            }
+	        }
+
+	        for (Card card : deck) {
+	            System.out.println(card);
+	    }
+	        return "succesful";
+	 }
+	 
+	public void Shuffle() {
+		deck.shuffle();
+		
+	}
+
+//        System.out.println("Deck after shuffling:");
+//        System.out.println(deck);
+	public String drawnCard() {
+        Card drawncard = deck.removeTop();
+        return drawncard.toString();
+	}
+//        System.out.println("\nDrawn card: " + drawnCard);
+//        System.out.println("deck length after removing " + deck.getLen());
+	
+	public void pile(List<Card> Card) {
+		for (int i = 0; i < deck.getLen(); i++) {
+			if (i%2 == 0)
+				InPile.addAll(deck.cards.indexOf(i), InPile);
+		}
+	}
+	
+	public String matchCard(String card) {
+		if(card.substring(0) ==  Card.ABBR_RANKS && card.substring(1) == Card.ABBR_SUITS)
+			if(InPile.contains(card))
+				return "Won!";
+		else
+			return "Not sure";
+		return "Card doesnt exist!";
+        
+	}
+
+//        System.out.println("\nNew card created: " + newCard);
+
+public static void main(String[] args) {
+	CardGame c = new  CardGame();
+	
+	System.out.println(c.Shuffle());
+}
+}
+
+

@@ -1,0 +1,34 @@
+public class testingYahtzee {
+
+ 
+
+    public static void main(String[] args) {
+        // TODO Auto-generated method stub
+        Die die = new Die();
+        Yahtzee y = new Yahtzee("");
+        System.out.println(y.getdieRoll());
+        System.out.println(y.UpperSecResult());
+        System.out.println(y.LowerSecResult());
+
+        int[] list = {1,6,4,3,5};
+
+
+         System.out.println(y.Aces()); System.out.println(y.Twos());
+          System.out.println(y.Threes()); System.out.println(y.Fours());
+          System.out.println(y.Fives()); System.out.println(y.Sixes());
+          //System.out.println(y.Chance()); System.out.println(list[0]);
+          //System.out.println(y.ArrayToList());
+          System.out.println(y.ThreeOfAKind());
+          System.out.println(y.FourOfAKind());
+          System.out.println(y.YahtzeeCat());
+          System.out.println(y.FullHouse()); 
+          System.out.println(y.StraightLargeOrSmall());
+          System.out.println(y.LargeStraight()); 
+          System.out.println(y.SmallStraight());
+
+
+    }
+
+ 
+
+}

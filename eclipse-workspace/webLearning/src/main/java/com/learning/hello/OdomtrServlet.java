@@ -1,0 +1,78 @@
+package com.learning.hello;
+
+import java.io.IOException;
+import java.io.PrintWriter;
+import java.util.Random;
+
+import org.thymeleaf.TemplateEngine;
+import org.thymeleaf.context.WebContext;
+import org.thymeleaf.templatemode.TemplateMode;
+import org.thymeleaf.templateresolver.WebApplicationTemplateResolver;
+import org.thymeleaf.web.IWebExchange;
+import org.thymeleaf.web.servlet.JakartaServletWebApplication;
+
+import com.learning.hello.controller.Odometer;
+
+import jakarta.servlet.ServletConfig;
+import jakarta.servlet.ServletException;
+import jakarta.servlet.annotation.WebServlet;
+import jakarta.servlet.http.HttpServlet;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
+
+@WebServlet("/OdomtrServlet")
+public class OdomtrServlet extends HttpServlet {
+
+	private static final long serialVersionUID = 1L;
+	
+	
+	public int nextReading;
+	public int prevReading;
+	private Odometer odo;
+	private JakartaServletWebApplication application;
+	private TemplateEngine templateEngine;
+	
+	 @Override
+	  public void init(ServletConfig config) throws ServletException {
+	    super.init(config);
+	    odo = new Odometer(4);
+	    
+	    application = JakartaServletWebApplication.buildApplication(getServletContext());
+	    final WebApplicationTemplateResolver templateResolver = 
+	        new WebApplicationTemplateResolver(application);
+	    templateResolver.setTemplateMode(TemplateMode.HTML);
+	    templateResolver.setPrefix("/WEB-INF/templates/");
+	    templateResolver.setSuffix(".html");
+	    templateEngine = new TemplateEngine();
+	    templateEngine.setTemplateResolver(templateResolver);
+	  }
+	 
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		response.setContentType("text/html");
+		odo.setReading(Integer.parseInt(request.getParameter("reading")));
+		String action = request.getParameter("action");
+		System.out.println(action);
+		if (action.equals("next")) {
+			odo.incrementReading();
+		}
+		else if(action.equals("prev")) {
+			odo.decrementReading();
+		}
+
+		 
+		System.out.println(nextReading);
+	    var out = response.getWriter();
+	    final IWebExchange webExchange = 
+	        this.application.buildExchange(request, response);
+	    final WebContext ctx = new WebContext(webExchange);
+	    ctx.setVariable("reading", odo.getReading() );  
+	    templateEngine.process("Odomtr", ctx, out);
+	}
+		
+	@Override
+	  protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+	    final IWebExchange webExchange = this.application.buildExchange(req, resp);
+	    final WebContext ctx = new WebContext(webExchange);
+	    templateEngine.process("Odomtr", ctx, resp.getWriter());
+	  }
+}

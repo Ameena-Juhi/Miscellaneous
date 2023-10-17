@@ -1,0 +1,17 @@
+127.0.0.1 - - [25/Aug/2023:16:14:32 +0530] "GET / HTTP/1.1" 404 751
+127.0.0.1 - - [25/Aug/2023:16:15:59 +0530] "GET / HTTP/1.1" 404 751
+0:0:0:0:0:0:0:1 - - [25/Aug/2023:16:16:07 +0530] "HEAD /webLearning/CardGameServlet HTTP/1.1" 200 -
+0:0:0:0:0:0:0:1 - - [25/Aug/2023:16:16:07 +0530] "HEAD /webLearning/OdomtrServlet HTTP/1.1" 200 -
+0:0:0:0:0:0:0:1 - - [25/Aug/2023:16:16:07 +0530] "HEAD /webLearning/hilo HTTP/1.1" 200 -
+0:0:0:0:0:0:0:1 - - [25/Aug/2023:16:16:07 +0530] "HEAD /webLearning/hilo HTTP/1.1" 200 -
+0:0:0:0:0:0:0:1 - - [25/Aug/2023:16:16:07 +0530] "HEAD /webLearning/servlet/com.learning.hello.FibonacciGameServlet HTTP/1.1" 404 -
+0:0:0:0:0:0:0:1 - - [25/Aug/2023:16:16:09 +0530] "HEAD /webLearning/NoticeServlet HTTP/1.1" 200 -
+0:0:0:0:0:0:0:1 - - [25/Aug/2023:16:16:09 +0530] "HEAD /webLearning/OdomtrServlet HTTP/1.1" 200 -
+0:0:0:0:0:0:0:1 - - [25/Aug/2023:16:16:09 +0530] "HEAD /webLearning/CardGameServlet HTTP/1.1" 200 -
+0:0:0:0:0:0:0:1 - - [25/Aug/2023:16:16:09 +0530] "HEAD /webLearning/servlet/com.learning.hello.FibonacciGameServlet HTTP/1.1" 404 -
+0:0:0:0:0:0:0:1 - - [25/Aug/2023:16:16:43 +0530] "GET /webLearning/NoticeServlet HTTP/1.1" 200 676
+0:0:0:0:0:0:0:1 - - [25/Aug/2023:16:16:43 +0530] "GET /favicon.ico HTTP/1.1" 404 762
+0:0:0:0:0:0:0:1 - - [25/Aug/2023:16:16:50 +0530] "POST /webLearning/NoticeServlet HTTP/1.1" 200 682
+127.0.0.1 - - [25/Aug/2023:16:22:40 +0530] "GET / HTTP/1.1" 404 751
+0:0:0:0:0:0:0:1 - - [25/Aug/2023:16:22:50 +0530] "GET /webLearning/NoticeServlet HTTP/1.1" 200 663
+0:0:0:0:0:0:0:1 - - [25/Aug/2023:16:23:13 +0530] "POST /webLearning/NoticeServlet HTTP/1.1" 200 663

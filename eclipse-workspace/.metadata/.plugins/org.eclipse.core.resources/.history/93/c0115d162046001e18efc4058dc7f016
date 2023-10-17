@@ -1,0 +1,31 @@
+package com.prodapt.learningspring;
+
+import java.io.IOException;
+
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+
+import jakarta.servlet.http.HttpServletResponse;
+
+@Controller
+@RequestMapping("/student")
+public class Student {
+	
+	String message = "";
+
+    @GetMapping
+    public String studentForm(Model model) {
+    	model.addAttribute("message", message);
+        return "StudentForm";
+    }
+
+    // Add POST mapping for processing form submission here
+    @PostMapping
+    public void processStudentForm(String name, String score, HttpServletResponse resp) throws IOException{
+    	message = String.format("I am currently processing student with %s %s", name, score);
+    	resp.sendRedirect("/student");
+    }
+}

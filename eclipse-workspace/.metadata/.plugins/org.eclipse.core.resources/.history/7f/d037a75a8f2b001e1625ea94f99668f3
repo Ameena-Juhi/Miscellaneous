@@ -1,0 +1,77 @@
+import java.util.*;
+public class Yahtzee {
+
+	private int[] dieRoll;
+	private int score;
+	private String Category;
+	
+	public Yahtzee(int[] dieRoll, String Category){
+		this.dieRoll = dieRoll;
+		this.Category = Category;
+		
+	}
+	
+	public int upperSecScore(int number) {
+		int count=0,Score;
+		for(int i=0;i< dieRoll.length;i++) {
+			if(dieRoll[i]==number) {
+				count++;
+			}
+		}
+		return Score = count * number;
+		
+	}
+	
+	public int Occurences(List<Integer> list , int number) {
+		int freq = Collections.frequency(list, number );
+		return freq;
+	}
+	
+	public ArrayList<Integer> ArrayToList(int[] arr){
+		ArrayList<Integer> dieRollList = new ArrayList<>();
+		for(int i :  arr) {
+			dieRollList.add(i);
+		}
+		return dieRollList;
+	}
+	public int Aces(){
+		return upperSecScore(1);
+	}
+	
+	public int Twos(){
+		return upperSecScore(2);
+	}
+	
+	public int Threes(){
+		return upperSecScore(3);
+	}
+	
+	public int Fours(){
+		return upperSecScore(4);
+	}
+	
+	public int Fives(){
+		return upperSecScore(5);
+	}
+	
+	public int Sixes(){
+		return upperSecScore(6);
+	}
+	
+	public int Chance() {
+		int sum = 0;
+		for (int i=0; i < dieRoll.length; i++)
+			sum+=dieRoll[i];
+		return sum;
+	}
+	
+	public int ThreeOfAKind(List<Integer> list) {
+		//List<Integer> list = new List<Integer>(); 
+		list = ArrayToList(dieRoll);
+		if (Occurences(list,5) == 3) {
+			;
+		}
+		return(Occurences(list,5));
+	}
+	
+}

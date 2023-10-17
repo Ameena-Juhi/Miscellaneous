@@ -1,0 +1,10 @@
+
+public class Solution {
+	 public static int toHinduArabic(String roman) {
+	        //your code here
+		 values[] = {1000,900,600,500,400,100,90,60,50,40,10,9,6,5,4,1};
+		 romans[] = {"M","CM","DC",""}; 
+		 
+	    }
+
+}

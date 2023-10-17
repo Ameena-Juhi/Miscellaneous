@@ -1,0 +1,19 @@
+import jav.util.*;
+public class Odometer {
+	public static boolean isAscending(int num) {
+		String strNum = Integer.toString(num);
+		char[] Charnum = strNum.toCharArray() ;
+		int n = strNum.length();
+		for (int i=0;i<n-1;i++) {
+			
+		}
+			
+	}
+	public static void main(String [] args) {
+		int[] 
+	   System.out.println("The sorted int array is:");
+	   
+	   }
+	
+
+}

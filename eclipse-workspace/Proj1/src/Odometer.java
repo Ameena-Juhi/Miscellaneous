@@ -1,0 +1,89 @@
+import java.util.Arrays;
+
+public class Odometer {
+	public static int lowestReading(int reading) {
+		int length = String.valueOf(reading).length();
+		int read=0;
+		for(int i=1;i<=length;i++)
+		{
+			read=read*10;
+			read+=i;
+		}
+		return read;
+	}
+	public static int highestReading(int reading) {
+		int length = String.valueOf(reading).length();
+		int read=0;
+		for(int i=9-length+1;i<=9;i++)
+		{
+			read=read*10;
+			read+=i;
+		}
+		return read;
+	}
+	public static boolean isAscending(int reading) {
+		int temp = reading;
+		int prev=10;
+		int curr=0;
+		while(temp>0) {
+			curr=temp%10;
+			if(curr>=prev)
+				return false;
+			else {
+				prev = curr;
+				temp/=10;
+			}
+		}
+		return true;
+	}
+	public static int nextReading(int reading) {
+		do {
+			if(reading>highestReading(reading)) {
+				return lowestReading(reading);
+			}
+			reading++;
+		}while(!isAscending(reading)); 
+		return reading;
+	}
+	public static int prevReading(int reading) {
+		do {
+			if(reading<lowestReading(reading))
+			{
+				return highestReading(reading);
+			}
+			reading--;
+		}while(!isAscending(reading)); 
+		return reading;
+	}
+	public static int nextKthReading(int reading,int k) {
+		for(int i=0; i<k;i++) {
+			reading = nextReading(reading);
+		}
+		return reading;
+	}
+	public static int prevKthReading(int reading,int k) {
+		for(int i=0; i<k;i++) {
+			reading = prevReading(reading);
+		}
+		return reading;
+	}
+	public static int distance(int start ,int end) {
+		int distance=0;
+		while(start!=end) {
+			distance++;
+			start=nextReading(start);
+		}
+		return distance;
+	}
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		System.out.println(isAscending(6789));
+		System.out.println(nextReading(13456789));
+		System.out.println(prevReading(2345));
+		System.out.println(nextKthReading(789,1));
+		System.out.println(prevKthReading(123,1));
+		System.out.println(distance(789,123));
+	}
+
+}
+

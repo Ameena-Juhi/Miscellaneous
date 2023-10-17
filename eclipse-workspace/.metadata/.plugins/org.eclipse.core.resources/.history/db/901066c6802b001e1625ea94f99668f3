@@ -1,0 +1,11 @@
+
+public class testingYahtzee {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		int[] list = [1,2,3,1,1];
+		Yahtzee y = new Yahtzee([1,2,1,3,4],"");
+		
+	}
+
+}
